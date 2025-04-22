@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Introduction Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #fff);
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #01579b;
+      text-align: center;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+    }
+
+    img {
+      height: 200px;
+      width: 150px;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    ul {
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+      padding-left: 20px;
+    }
+
+    .gallery {
+      text-align: center;
+    }
+
+    .gallery img {
+      width: 120px;
+      height: auto;
+      margin: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      border-color: #0077b6;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #0288d1;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #01579b;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    th {
+      background-color: #0288d1;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    form {
+      width: 60%;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #f1f8e9;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #388e3c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #2e7d32;
+    }
+
+    #output {
+      display: none;
+      width: 60%;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #e8f5e9;
+      border-left: 6px solid #66bb6a;
+      border-radius: 6px;
+    }
+
+    #more {
+      display: none;
+    }
+  </style>
+
+  <script>
+    function showMore() {
+      var moreText = document.getElementById("more");
+      var button = document.getElementById("myButton");
+
+      if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+        button.innerHTML = "Show less";
+      } else {
+        moreText.style.display = "none";
+        button.innerHTML = "Show more";
+      }
+    }
+
+    function displayDetails(event) {
+      event.preventDefault();
+      let name = document.getElementById("name").value;
+      let classVal = document.getElementById("class").value;
+      let rollNo = document.querySelector('input[name="roll"]:checked')?.value;
+
+      if (name && classVal && rollNo) {
+        document.getElementById("output").style.display = "block";
+        document.getElementById("output").innerHTML = `
+          <h3>Submitted Info</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Class:</strong> ${classVal}</p>
+          <p><strong>Roll No:</strong> ${rollNo}</p>
+        `;
+      } else {
+        alert("Please fill in all fields!");
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Welcome to My Introduction Page</h1>
+  <img src="dhruv.jpg" alt="Dhruv kanhed" height="200" width="350">
+
+  <h2>Personal Information</h2>
+  <p style="text-align:center;"><strong>Name:</strong> Dhruv kanhed</p>
+  <p style="text-align:center;"><strong>Education:</strong> B.Tech in Electronics & Computer Engineering, WIT Solapur</p>
+
+  <h2>Academic Skills</h2>
+  <ul>
+    <li>Languages: C, C++, Java, Python</li>
+    <li>Web Technologies: HTML5, CSS3, JavaScript</li>
+    <li>Tools: Git, VS Code</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+    <li>Online Quiz System</li>
+    <li>Scientific Calculator</li>
+    <li>Weather App using API</li>
+  </ul>
+
+  <h2>Subjects Learned</h2>
+  <ul>
+    <li>Data Structures and Algorithms (DSA)</li>
+    <li>Database Management System (DBMS)</li>
+    <li>Operating System (OS)</li>
+    <li>Computer Networks</li>
+  </ul>
+
+  <h2>Hobbies</h2>
+  <ul>
+    <li>Reading Books</li>
+    <li>Drawing & Painting</li>
+    <li>Coding</li>
+    <li>Playing Badminton</li>
+  </ul>
+
+  <h2>Certificates & Photos</h2>
+  <div class="gallery">
+    <img src="certificate1.jpg" alt="Certificate 1">
+    <img src="certificate2.jpg" alt="Certificate 2">
+  </div>
+
+  <button id="myButton" onclick="showMore()">Show more</button>
+
+  <div id="more">
+    <h2>Academic Qualification</h2>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Exam Board</th>
+        <th>Year of Passing</th>
+        <th>Percent/CGPA</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>SSC</td>
+        <td>2021</td>
+        <td>60%</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HSC</td>
+        <td>2023</td>
+        <td>69%</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Submit Your Details</h2>
+  <form onsubmit="displayDetails(event)">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" required><br>
+
+    <label for="class">Class:</label><br>
+    <input type="text" id="class" required><br>
+
+    <label>Roll No:</label><br>
+    <input type="radio" name="roll" value="54"> 35<br>
+    <input type="radio" name="roll" value="55"> 36<br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="output"></div>
+
+</body>
+</html>
